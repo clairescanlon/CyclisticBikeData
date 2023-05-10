@@ -1,0 +1,67 @@
+The capstone is based on the six phases of the Google Data Analysis Process: ask, prepare, process, analyze, share, and act.
+
+Phase 1: Ask
+Define the problem you want to solve or the question you want to answer with your analysis.
+Identify the data you need to answer the question or solve the problem.
+Determine the scope of the analysis.
+Define key metrics and performance indicators.
+Identify potential biases and limitations of the data and analysis.
+
+Phase 2: Prepare
+Collect and acquire the necessary data from your sources.
+Clean and transform the data to ensure that it is accurate and consistent.
+Organize and structure your data in a way that is easy to analyze.
+Merge and aggregate the data as needed.
+Identify and handle any missing or null values.
+Check for any outliers or anomalies in the data.
+Create a data dictionary to document the variables and their definitions.
+Determine the variables of interest for the analysis.
+Split the data into training and test sets as needed for predictive modeling.
+Normalize or standardize the data as needed.
+Save the cleaned data to a separate file for future use.
+
+Phase 3: Process
+Explore the data using summary statistics and visualizations.
+Identify any correlations or patterns in the data.
+Perform feature engineering to create new variables or transform existing ones.
+Select relevant variables for analysis and remove irrelevant ones.
+Use statistical methods to identify significant variables or relationships.
+Use machine learning algorithms to develop predictive models.
+Evaluate model performance using appropriate metrics.
+Fine-tune model parameters as needed.
+Apply the final model to the test set for evaluation.
+Save the final model for future use.
+
+Phase 4: Analyze
+Interpret the results of the analysis.
+Identify key findings and insights.
+Use visualizations to communicate the findings and insights.
+Perform hypothesis testing to validate findings and insights.
+Perform sensitivity analysis to test the robustness of the findings and insights.
+Identify any limitations or potential biases in the analysis and findings.
+Summarize the findings and insights in a report or presentation.
+Provide recommendations based on the findings and insights.
+Collaborate with stakeholders to ensure the analysis meets their needs.
+Prepare for any questions or concerns stakeholders may have about the analysis.
+
+Phase 5: Share
+Determine the best way to share the findings and insights with stakeholders.
+Tailor the report or presentation to the intended audience and ensure it is easily understandable.
+Include visualizations and key metrics to support the findings and insights.
+Use appropriate language and tone to communicate the results.
+Address any potential concerns or objections that stakeholders may have.
+Provide access to the data and analysis code as needed.
+Solicit feedback from stakeholders and incorporate it as appropriate.
+Archive the analysis and findings for future reference.
+
+Phase 6: Act
+Use the insights and recommendations from the analysis to inform decision-making.
+Develop an action plan based on the recommendations.
+Assign responsibilities and establish timelines for implementing the action plan.
+Monitor and track progress towards implementing the action plan.
+Evaluate the effectiveness of the action plan.
+Track and measure key performance indicators to monitor progress towards achieving goals.
+Adjust the action plan as needed based on new data or feedback.
+Communicate progress and results to stakeholders.
+Celebrate successes and learn from failures.
+Archive the final report and analysis for future reference.
