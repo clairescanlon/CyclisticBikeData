@@ -1,0 +1,95 @@
+
+
+
+# Install required packages
+install.packages(c("summarytools", "DataExplorer", "dplyr", "tidyr", "janitor", "skimr", "ggplot2", "readr", "knitr", "cluster", "lubridate", "data.validator", "tidyverse","geosphere"))
+
+# Load required packages
+library(summarytools)
+library(DataExplorer)
+library(dplyr)
+library(tidyr)
+library(janitor)
+library(skimr)
+library(ggplot2)
+library(readr)
+library(knitr)
+library(cluster)
+library(lubridate)
+library(data.validator)
+library(tidyverse)
+library(geosphere)
+
+
+# Set your working directory to where the CSV files are located
+setwd("C:/Users/clair/OneDrive/Desktop/UpdatedCode_MergedData")
+
+
+# load the cleanedcyclisticdata3 dataset
+load("cleanedcyclisticdata3.rda")
+
+### Changing Data Types ###
+
+# Convert character variables to appropriate data types
+cleanedcyclisticdata3$ride_id <- as.character(cleanedcyclisticdata3$ride_id)
+cleanedcyclisticdata3$rideable_type <- as.factor(cleanedcyclisticdata3$rideable_type)
+cleanedcyclisticdata3$start_station_name <- as.character(cleanedcyclisticdata3$start_station_name)
+cleanedcyclisticdata3$start_station_id <- as.character(cleanedcyclisticdata3$start_station_id)
+cleanedcyclisticdata3$end_station_name <- as.character(cleanedcyclisticdata3$end_station_name)
+cleanedcyclisticdata3$end_station_id <- as.character(cleanedcyclisticdata3$end_station_id)
+cleanedcyclisticdata3$member_casual <- as.factor(cleanedcyclisticdata3$member_casual)
+cleanedcyclisticdata3$day_of_week <- as.factor(cleanedcyclisticdata3$day_of_week)
+cleanedcyclisticdata3$time_of_day <- as.POSIXct(cleanedcyclisticdata3$time_of_day, format = "%H:%M:%S")
+cleanedcyclisticdata3$season <- as.factor(cleanedcyclisticdata3$season)
+
+# Convert geographic coordinates to numeric
+cleanedcyclisticdata3$start_lat <- as.numeric(cleanedcyclisticdata3$start_lat)
+cleanedcyclisticdata3$start_lng <- as.numeric(cleanedcyclisticdata3$start_lng)
+cleanedcyclisticdata3$end_lat <- as.numeric(cleanedcyclisticdata3$end_lat)
+cleanedcyclisticdata3$end_lng <- as.numeric(cleanedcyclisticdata3$end_lng)
+
+# Save the cleanedcyclisticdata3 object to a file
+save(cleanedcyclisticdata3, file = "cleanedcyclisticdata4.rda")
+
+# save the new dataset as a CSV file
+write.csv(cleanedcyclisticdata4, "cleanedcyclisticdata4.csv", row.names = FALSE)
+  
+### Checking for Outliers ###
+
+# Load required libraries
+library(dplyr)
+library(caret)
+
+setwd("C:/Users/clair/OneDrive/Desktop/UpdatedCode_MergedData")
+load("C:/Users/clair/OneDrive/Desktop/UpdatedCode_MergedData/cleanedcyclisticdata4.rda")
+
+# Clear the workspace
+rm(list = ls())
+
+# Load the cleanedcyclisticdata3 dataset
+load("cleanedcyclisticdata3.rda")
+
+# Check for outliers
+outliers <- boxplot.stats(cleanedcyclisticdata3$ride_duration)$out
+
+# Inspect outliers
+print(outliers)
+
+# Remove outliers
+cleanedcyclisticdata3 <- cleanedcyclisticdata3 %>%
+  filter(!ride_duration %in% outliers)
+
+# Split the data into training and test sets (70% training, 30% test)
+set.seed(123)
+train_indices <- createDataPartition(cleanedcyclisticdata3$ride_duration, p = 0.7, list = FALSE)
+train_data <- cleanedcyclisticdata3[train_indices, ]
+test_data <- cleanedcyclisticdata3[-train_indices, ]
+
+# Save the datasets
+save(cleanedcyclisticdata3, train_data, test_data, file = "cleanedcyclisticdata3.rda")
+write.csv(cleanedcyclisticdata3, "cleanedcyclisticdata4.csv", row.names = FALSE)
+write.csv(train_data, "train_data.csv", row.names = FALSE)
+write.csv(test_data, "test_data.csv", row.names = FALSE)
+
+# Summary statistics of cleaned data
+summary(cleanedcyclisticdata4)
