@@ -1,0 +1,42 @@
+Below you will find all of the steps taken with the code used for this project. 
+
+1. Installing and attaching necessary R packages: tidyverse, janitor, data.validator, lubridate, data.table, dplyr, knitr, readr, summarytools, DataExplorer, skimr, ggplot2, cluster, geosphere.
+
+2. Setting the working directory to the location where the CSV files are located.
+
+3. Merging all yearly datasets together and checking data:
+   - Getting a list of all CSV files in the directory.
+   - Reading and combining all CSV files into the `cyclisticdata` dataframe.
+   - Viewing the first few rows, summary statistics, and last few rows of the data.
+   - Saving the merged data as a CSV file.
+
+4. Handling missing values:
+   - Finding missing values in the data.
+   - Counting the number of missing values in the data frame and in each column.
+   - Counting rows with missing values.
+   - Removing rows with missing values and saving the cleaned data as an Rda file and a CSV file.
+
+5. Handling duplicate values:
+   - Grouping the data by ride_id and counting the number of occurrences.
+   - Deleting duplicate data based on ride_id and keeping only the unique rows.
+   - Saving the cleaned data without duplicates as an Rda file and updating the CSV file.
+
+6. Creating new columns:
+   - Creating new columns: `ride_duration`, `day_of_week`, `time_of_day`, and `season` based on existing data.
+   - Saving the updated dataset as an Rda file and a CSV file.
+
+7. Changing data types:
+   - Converting character variables to appropriate data types.
+   - Converting geographic coordinates to numeric.
+   - Saving the cleaned dataset with updated data types as an Rda file and a CSV file.
+
+8. Checking for outliers:
+   - Checking for outliers in the `ride_duration` column using boxplot statistics.
+   - Removing outliers from the dataset.
+   - Displaying summary statistics and the structure of the cleaned data.
+
+9. Splitting the dataset:
+   - Splitting the cleaned data into two datasets: `member_data` and `casual_data` based on the `member_casual` column.
+   - Saving the member and casual datasets as Rda files and CSV files.
+
+Note: Keywords have been incorporated into the checklist summary for SEO optimization.
