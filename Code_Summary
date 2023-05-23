@@ -39,4 +39,4 @@ Below you will find all of the steps taken with the code used for this project.
    - Splitting the cleaned data into two datasets: `member_data` and `casual_data` based on the `member_casual` column.
    - Saving the member and casual datasets as Rda files and CSV files.
 
-Note: Keywords have been incorporated into the checklist summary for SEO optimization.
+
