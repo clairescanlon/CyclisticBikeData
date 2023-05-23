@@ -60,8 +60,10 @@ write.csv(cleanedcyclisticdata4, "cleanedcyclisticdata4.csv", row.names = FALSE)
 library(dplyr)
 library(caret)
 
-setwd("C:/Users/clair/OneDrive/Desktop/UpdatedCode_MergedData")
-load("C:/Users/clair/OneDrive/Desktop/UpdatedCode_MergedData/cleanedcyclisticdata4.rda")
+# Set your working directory to where the CSV files are located
+setwd("C:/Users/USERNAME/LOCATION/FOLDERWHEREDATASETSARE/")
+
+load("C:/Users/USERNAME/LOCATION/FOLDERWHEREDATASETSARE/cleanedcyclisticdata3.rda")
 
 # Clear the workspace
 rm(list = ls())
