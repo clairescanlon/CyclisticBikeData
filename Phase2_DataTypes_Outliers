@@ -79,17 +79,5 @@ print(outliers)
 cleanedcyclisticdata3 <- cleanedcyclisticdata3 %>%
   filter(!ride_duration %in% outliers)
 
-# Split the data into training and test sets (70% training, 30% test)
-set.seed(123)
-train_indices <- createDataPartition(cleanedcyclisticdata3$ride_duration, p = 0.7, list = FALSE)
-train_data <- cleanedcyclisticdata3[train_indices, ]
-test_data <- cleanedcyclisticdata3[-train_indices, ]
-
-# Save the datasets
-save(cleanedcyclisticdata3, train_data, test_data, file = "cleanedcyclisticdata3.rda")
-write.csv(cleanedcyclisticdata3, "cleanedcyclisticdata4.csv", row.names = FALSE)
-write.csv(train_data, "train_data.csv", row.names = FALSE)
-write.csv(test_data, "test_data.csv", row.names = FALSE)
-
 # Summary statistics of cleaned data
 summary(cleanedcyclisticdata4)
