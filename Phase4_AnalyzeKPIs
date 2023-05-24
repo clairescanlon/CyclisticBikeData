@@ -1,0 +1,39 @@
+###### PHASE 4 - ANALYZE DATA ######
+
+### KPI for average ride duration per user type (based on weighted average to reduce bias as the sizes of the two groups are not the same)
+
+# Load member_data and casual_data
+load("member_data.Rda")
+load("casual_data.Rda")
+
+# Calculate the total ride duration and number of rides for each user type
+member_summary <- member_data %>%
+  summarise(total_ride_duration = sum(ride_duration),
+            total_rides = n())
+
+casual_summary <- casual_data %>%
+  summarise(total_ride_duration = sum(ride_duration),
+            total_rides = n())
+
+# Calculate weights based on the number of rides
+member_weight <- member_summary$total_rides / (member_summary$total_rides + casual_summary$total_rides)
+casual_weight <- casual_summary$total_rides / (member_summary$total_rides + casual_summary$total_rides)
+
+# Calculate the weighted average ride duration for each user type
+weighted_average_duration <- (member_summary$total_ride_duration * member_weight +
+                                casual_summary$total_ride_duration * casual_weight) /
+  (member_weight + casual_weight)
+
+# Print the results
+cat("Weighted Average Ride Duration (Member):", weighted_average_duration[1], "minutes\n")
+cat("Weighted Average Ride Duration (Casual):", weighted_average_duration[1], "minutes\n")
+
+# Create a data frame with weighted average ride duration for each customer group
+weighted_average_df <- data.frame(Customer_Group = c("Member", "Casual"),
+                                  Weighted_Average_Ride_Duration = weighted_average_duration)
+
+# Set your working directory to the location where you want to save the CSV file
+setwd("C:/Users/USERNAME/LOCATION/FOLDERWHERECSVFILEWILLBESAVED/")
+
+# Save the data frame as a CSV file
+write.csv(weighted_average_df, "weighted_average_ride_duration.csv", row.names = FALSE)
