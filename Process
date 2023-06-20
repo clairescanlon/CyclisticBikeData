@@ -1,0 +1,67 @@
+Step by Step Process: Data Analysis 
+
+Note: All monthly datasets were merged into their applicable year, reducing the time taken to organize and clean the data.
+
+
+Step 1: Merging All Yearly Datasets Together & Checking Data
+
+- Installed the required R packages.
+- Set the working directory to the location where the CSV files are located.
+- Obtained a list of all CSV files in the directory.
+- Read and combined all CSV files into a single data frame using `dplyr::bind_rows()`.
+- Viewed the first few rows, summary statistics, and last few rows of the merged data.
+- Saved the merged data as a CSV file named "cyclisticdata.csv".
+
+Step 2: Handling Missing Values
+
+- Installed the required R packages.
+- Set the working directory to the location where the CSV files are located.
+- Loaded the merged data from the CSV file.
+- Explored the data by introducing it, displaying its structure, summary statistics, and column names.
+- Checked for missing values in the data and counted the number of missing values in each column and row.
+- Removed rows with missing values using `na.omit()`.
+- Saved the cleaned data as an Rda file named "cleanedcyclisticdata.Rda".
+- Wrote the cleaned data frame to a new CSV file named "cleanedcyclisticdata.csv".
+
+Step 3: Handling Duplicate Values
+
+- Grouped the cleaned data by ride_id and counted the number of occurrences.
+- Deleted duplicate rows using `distinct()` and kept the first occurrence of each ride_id.
+- Saved the deduplicated data as an Rda file named "cleanedcyclisticdata2.Rda".
+- Updated the cleaned CSV file to reflect the changes by writing the deduplicated data to a new CSV file named "cleanedcyclisticdata2.csv".
+
+Step 4: Creating New Columns
+
+- Loaded the cleaned data from the "cleanedcyclisticdata2.Rda" file.
+- Created a new column named "ride_duration" by subtracting the start time from the end time and converting the difference to minutes.
+- Created a new column named "day_of_week" by extracting the day of the week from the start time.
+- Created a new column named "time_of_day" by formatting the start time to show only the hour, minute, and second.
+- Created a new column named "season" by categorizing the start time by month as winter, spring, summer, fall, or unknown.
+- Saved the new dataset as an Rda file named "cleanedcyclisticdata3.Rda".
+- Saved the new dataset as a CSV file named "cleanedcyclisticdata3.csv".
+
+Step 5: Changing Data Types
+
+- Installed the required R packages.
+- Set the working directory to the location where the CSV files are located.
+- Loaded the cleaned data from the "cleanedcyclisticdata3.Rda" file.
+- Converted character variables to appropriate data types using `as.character()` and `as.factor()`.
+- Converted geographic coordinates to numeric using `as.numeric()`.
+- Saved the updated dataset as an Rda file named "cleanedcyclisticdata4.Rda".
+- Saved the updated dataset as a CSV file named "cleanedcyclisticdata4.csv".
+
+Step 6: Checking for Outliers
+
+- Installed the required R packages.
+- Set the working directory to the location where the CSV files are located.
+- Loaded the cleaned data from the "cleanedcyclisticdata3.Rda" file.
+- Checked for outliers in the "ride_duration" variable using the boxplot method.
+- Removed outliers from the dataset using `filter()`.
+- Displayed summary statistics and the structure of the cleaned data.
+
+Step 7: Splitting Data and Saving
+
+- Split the cleaned data into two datasets: "member_data" and "casual_data" based on the "member_casual" variable.
+- Saved
+
+ from CRAN since last check at 2021-09-27 00:32:02 EDT
